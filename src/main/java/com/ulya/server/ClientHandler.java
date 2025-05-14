@@ -292,6 +292,35 @@ public class ClientHandler implements Runnable {
 
 
 
+                    case "ADD_SESSION": {
+                        productId = Integer.parseInt(in.readLine());
+                        String time = in.readLine();  // Формат: "HH:mm"
+                        String date = in.readLine();  // Формат: "dd.MM.yyyy"
+                        int success = dbManager.addSession(productId, time, date);
+                        out.println(success != -1 ? "SUCCESS" : "FAILURE");
+                        break;
+                    }
+
+                    case "GET_ALL_SESSIONS": {
+                        List<String> sessions = dbManager.getAllSession();
+                        out.println(sessions.size());
+                        for (String session : sessions) {
+                            out.println(session); // Формат: "ID,productId,movieName,time,date"
+                        }
+                        break;
+                    }
+                    case "UPDATE_SESSION" :
+                    {
+                        int id = Integer.parseInt(in.readLine());
+                        productId = Integer.parseInt(in.readLine());
+                        String time = in.readLine();
+                        String date = in.readLine();
+                        updated = dbManager.updateSessionInfo (id,productId, time, date);
+                        out.println(updated ? "SUCCESS" : "FAILURE");
+                        break;
+                    }
+
+
 
 
 

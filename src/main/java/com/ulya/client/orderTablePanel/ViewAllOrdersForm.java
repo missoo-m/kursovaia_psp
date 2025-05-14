@@ -37,14 +37,12 @@ public class ViewAllOrdersForm extends JFrame {
                 new Color(246, 124, 185) // Нежно-розовый текст заголовка
         ));
 
-        // Загрузка всех заказов
         loadOrders(ordersTable);
 
-        // Кнопки "Назад" и "Удалить"
         JButton backButton = createStyledButton("Назад");
         backButton.addActionListener(e -> {
             dispose(); // Закрыть текущую форму
-            new AdminMainForm(clientConnection).show(); // Открыть панель администратора
+            new AdminMainForm(clientConnection).show();
         });
 
         JButton deleteButton = createStyledButton("Удалить заказ");
@@ -131,7 +129,6 @@ public class ViewAllOrdersForm extends JFrame {
         button.setFocusPainted(false); // Убираем выделение рамки при фокусе
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        // Добавляем границу для визуального эффекта
         button.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(244, 122, 181), 2), // Нежно-розовая граница
                 BorderFactory.createEmptyBorder(10, 20, 10, 20) // Внутренние отступы

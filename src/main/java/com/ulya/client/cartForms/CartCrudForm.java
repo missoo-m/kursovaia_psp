@@ -4,7 +4,6 @@ import com.ulya.client.ClientConnection;
 import com.ulya.client.clientForms.MovieSeatSelectionForm;
 import com.ulya.client.clientForms.UserMainForm;
 import com.ulya.client.orderTablePanel.AddToOrderForm;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;

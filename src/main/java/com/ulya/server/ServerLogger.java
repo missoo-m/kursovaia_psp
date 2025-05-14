@@ -20,10 +20,14 @@ public class ServerLogger {
 
     public synchronized void log(String message) {
         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        writer.println("[" + timestamp + "] " + message);
+        // writer.println("[" + timestamp + "] " + message);
+        String logMessage = "[" + timestamp + "] " + message;
+        System.out.println(logMessage);
+        writer.println(logMessage);
     }
 
     public void close() {
         writer.close();
     }
 }
+

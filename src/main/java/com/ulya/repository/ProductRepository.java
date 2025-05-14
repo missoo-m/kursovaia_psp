@@ -97,11 +97,11 @@ public class ProductRepository {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return -1; // Возвращаем -1, если продукт не найден
+        return -1;
     }
 
     public List<String> getAllMovies() {
-        String query = "SELECT id, name FROM products"; // Убедитесь, что столбцы существуют
+        String query = "SELECT id, name FROM products";
         List<String> movies = new ArrayList<>();
         try (PreparedStatement stmt = connection.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {

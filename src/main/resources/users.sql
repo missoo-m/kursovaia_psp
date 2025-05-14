@@ -42,3 +42,10 @@ CREATE TABLE seats (
                        is_reserved BOOLEAN NOT NULL DEFAULT FALSE, -- Флаг: занято ли место
                        UNIQUE (product_id, seat_number)       -- Уникальная пара "фильм + номер места"
 );
+CREATE TABLE sessions (
+    id SERIAL PRIMARY KEY,                      -- Уникальный идентификатор сеанса
+    product_id INT NOT NULL REFERENCES products(id) ON DELETE CASCADE, -- Ссылка на ID фильма (и его название)
+    session_time TIME NOT NULL,                 -- Время сеанса
+    session_date DATE NOT NULL,                 -- Дата сеанса
+    UNIQUE (product_id, session_time, session_date) -- Уникальная комбинация фильма, времени и даты
+);

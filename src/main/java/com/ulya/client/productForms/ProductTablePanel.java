@@ -19,18 +19,17 @@ public class ProductTablePanel extends JPanel {
         this.productTable = createStyledTable();
         setLayout(new BorderLayout());
 
-        // Панель для фильтрации и поиска
         JPanel filterPanel = new JPanel(new BorderLayout());
         filterPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         JLabel searchLabel = new JLabel("Поиск:");
         searchLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        searchLabel.setForeground(new Color(246, 108, 186)); // Тёмно-зелёный текст
+        searchLabel.setForeground(new Color(246, 108, 186));
 
         JTextField searchField = new JTextField();
         searchField.setFont(new Font("Arial", Font.PLAIN, 14));
         searchField.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(246, 108, 186), 1), // Зелёная граница
-                BorderFactory.createEmptyBorder(5, 5, 5, 5) // Внутренние отступы
+                BorderFactory.createLineBorder(new Color(246, 108, 186), 1),
+                BorderFactory.createEmptyBorder(5, 5, 5, 5)
         ));
 
         filterPanel.add(searchLabel, BorderLayout.WEST);
@@ -38,12 +37,12 @@ public class ProductTablePanel extends JPanel {
 
         JScrollPane scrollPane = new JScrollPane(productTable);
         scrollPane.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(new Color(250, 126, 192), 2), // Тёмно-зелёная граница
+                BorderFactory.createLineBorder(new Color(250, 126, 192), 2),
                 "Список продуктов", // Заголовок таблицы
                 0,
                 0,
-                new Font("Arial", Font.BOLD, 16), // Шрифт заголовка
-                new Color(246, 108, 186) // Тёмно-зелёный цвет заголовка
+                new Font("Arial", Font.BOLD, 16),
+                new Color(246, 108, 186)
         ));
 
 

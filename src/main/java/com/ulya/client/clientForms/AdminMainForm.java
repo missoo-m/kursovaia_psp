@@ -6,7 +6,7 @@ import com.ulya.client.clientForms.login.LoginForm;
 import com.ulya.client.orderTablePanel.OrdersPieChartForm;
 import com.ulya.client.orderTablePanel.ViewAllOrdersForm;
 import com.ulya.client.productForms.ProductCrudForm;
-
+import com.ulya.client.clientForms.login.AdminScheduleForm;
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
@@ -42,6 +42,7 @@ public class AdminMainForm extends BaseMainForm {
         // Создание кнопок
         JButton viewProductsButton = createStyledButton("Управление продуктами");
         JButton manageUsersButton = createStyledButton("Управление пользователями");
+        JButton editseans = createStyledButton("Формирование сенсов");
         JButton viewOrdersButton = createStyledButton("Просмотр всех заказов");
         JButton viewOrdersChartButton = createStyledButton("Аналитика заказов");
         JButton logoutButton = createStyledButton("Выйти");
@@ -53,6 +54,7 @@ public class AdminMainForm extends BaseMainForm {
 
         buttonPanel.add(viewProductsButton);
         buttonPanel.add(manageUsersButton);
+        buttonPanel.add(editseans);
         buttonPanel.add(viewOrdersButton);
         buttonPanel.add(viewOrdersChartButton);
         buttonPanel.add(logoutButton);
@@ -68,7 +70,6 @@ public class AdminMainForm extends BaseMainForm {
         });
 
         viewOrdersChartButton.addActionListener(e -> {
-            // Пример данных для аналитической формы
             Map<String, Integer> ordersData = fetchOrdersAnalytics();
             new OrdersPieChartForm(ordersData).setVisible(true);
         });
@@ -87,6 +88,10 @@ public class AdminMainForm extends BaseMainForm {
         logoutButton.addActionListener(e -> {
             frame.dispose();
             new LoginForm(clientConnection).show();
+        });
+        editseans.addActionListener(e -> {
+            frame.dispose();
+            new AdminScheduleForm(clientConnection, role, userId).show();
         });
     }
 

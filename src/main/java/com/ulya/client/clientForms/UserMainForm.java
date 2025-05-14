@@ -23,7 +23,7 @@ public class UserMainForm extends BaseMainForm {
         // Заголовок формы
         JLabel titleLabel = new JLabel("Панель пользователя", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        titleLabel.setForeground(new Color(255, 105, 180)); // Нежно-розовый цвет текста
+        titleLabel.setForeground(new Color(255, 105, 180));
 
         // Настройка панели заголовка
         JPanel titlePanel = new JPanel();
@@ -41,7 +41,6 @@ public class UserMainForm extends BaseMainForm {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(4, 1, 10, 10)); // Уменьшил количество строк до 4
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 20, 20));
-
         buttonPanel.add(viewProductsButton);
         buttonPanel.add(manageCartButton);
         buttonPanel.add(viewOrdersButton);
@@ -77,16 +76,16 @@ public class UserMainForm extends BaseMainForm {
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
         button.setFont(new Font("Arial", Font.BOLD, 18));
-        button.setForeground(Color.WHITE); // Белый текст для контраста
-        button.setBackground(new Color(255, 182, 193)); // Нежно-розовый фон
-        button.setOpaque(true); // Фон кнопки отображается
-        button.setFocusPainted(false); // Убираем выделение рамки при фокусе
+        button.setForeground(Color.WHITE);
+        button.setBackground(new Color(255, 182, 193));
+        button.setOpaque(true);
+        button.setFocusPainted(false);
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         // Устанавливаем границу для визуального эффекта
         button.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(255, 105, 180), 2), // Нежно-розовая граница
-                BorderFactory.createEmptyBorder(10, 20, 10, 20) // Внутренние отступы
+                BorderFactory.createLineBorder(new Color(255, 105, 180), 2),
+                BorderFactory.createEmptyBorder(10, 20, 10, 20)
         ));
 
         button.addMouseListener(new java.awt.event.MouseAdapter() {

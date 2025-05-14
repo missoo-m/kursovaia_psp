@@ -23,10 +23,7 @@ public class AddToOrderForm extends JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-
         JPanel mainPanel = new JPanel(new BorderLayout());
-
-        // Таблица с товарами в корзине
         JTable cartTable = createStyledTable();
         JScrollPane scrollPane = new JScrollPane(cartTable);
         scrollPane.setBorder(BorderFactory.createTitledBorder(
@@ -37,23 +34,15 @@ public class AddToOrderForm extends JFrame {
                 new Font("Arial", Font.BOLD, 16),
                 new Color(255, 105, 180)
         ));
-
-        // Загрузка товаров в корзине
         loadCartItems(cartTable);
-
-        // Кнопки для действий
         JButton addButton = createStyledButton("Добавить в заказ");
         JButton backButton = createStyledButton("Назад");
-
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 10, 10));
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         buttonPanel.add(addButton);
         buttonPanel.add(backButton);
-
         mainPanel.add(scrollPane, BorderLayout.CENTER);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
-
-        // Обработчики кнопок
         addButton.addActionListener(e -> {
             int selectedRow = cartTable.getSelectedRow();
             if (selectedRow == -1) {
@@ -66,7 +55,6 @@ public class AddToOrderForm extends JFrame {
                 double price = Double.parseDouble(cartTable.getValueAt(selectedRow, 3).toString());
                 int quantity = Integer.parseInt(cartTable.getValueAt(selectedRow, 4).toString());
 
-                // Отправка запроса на добавление товара в заказ
                 clientConnection.send("ADD_ORDER");
                 clientConnection.send(String.valueOf(userId));
                 clientConnection.send(String.valueOf(productId));
@@ -75,7 +63,6 @@ public class AddToOrderForm extends JFrame {
 
                 String response = clientConnection.receive();
                 if ("SUCCESS".equals(response)) {
-                    // Удаление товара из корзины после успешного добавления в заказ
                     removeFromCart(productId);
                     loadCartItems(cartTable);
                     JOptionPane.showMessageDialog(this, "Товар успешно добавлен в заказ!");
@@ -89,7 +76,7 @@ public class AddToOrderForm extends JFrame {
 
         backButton.addActionListener(e -> {
             dispose();
-            new CartCrudForm(clientConnection, userId).show(); // Возврат к корзине
+            new CartCrudForm(clientConnection, userId).show();
         });
 
         add(mainPanel);

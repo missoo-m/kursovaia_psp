@@ -12,11 +12,13 @@ public class DatabaseManager {
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
     private final DatabaseConnection databaseConnection;
+    private final SessionRepository sessionRepository;
 
     private DatabaseManager() {
         databaseConnection = DatabaseConnection.getInstance();
         userRepository = new UserRepository();
         productRepository = new ProductRepository();
+        sessionRepository = new SessionRepository();
     }
 
     public static synchronized DatabaseManager getInstance() {
@@ -66,6 +68,26 @@ public class DatabaseManager {
     public List<String> getAllMovies() {
         return productRepository.getAllMovies();
     }
+
+
+
+
+
+
+    public int addSession(int productId, String time, String date) {
+        return sessionRepository.addSession(productId, time, date);
+    }
+
+    public List<String> getAllSession() {
+        return sessionRepository.getAllSession();
+    }
+
+    public boolean updateSessionInfo (int id, int productId, String time, String date) {
+        return sessionRepository.updateSessionInfo(id,productId, time, date );
+    }
+
+
+
 
     public boolean updateProduct(int id, String name, String category, double price, int quantity) {
         return productRepository.updateProduct(id, name, category, price, quantity);
